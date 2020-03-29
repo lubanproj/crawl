@@ -1,19 +1,17 @@
 package main
 
 import (
-	"fmt"
 	"regexp"
 )
 
-func regexMatch(url string, regex string) (string,bool) {
-	fmt.Println("url:", url)
+func regexMatch(target string, regex string) (string,bool) {
 	reg, err := regexp.Compile(regex)
 	if err != nil {
 		return "", false
 	}
-	if ok := reg.MatchString(url); !ok {
+	if ok := reg.MatchString(target); !ok {
 		return "", false
 	}
 
-	return reg.FindString(url), true
+	return reg.FindString(target), true
 }

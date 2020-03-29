@@ -5,7 +5,7 @@ func main() {
 	GetValueFromEnv("GITHUB_TOKEN")
 
 	// crawl
-	Crawl("https://gocn.vip/topics")
+	Crawl("https://gocn.vip/topics/node18")
 	// push to github
 
 }

@@ -13,7 +13,7 @@ require (
 	github.com/golang/protobuf v1.3.5 // indirect
 	github.com/gomodule/redigo v2.0.0+incompatible
 	github.com/kennygrant/sanitize v1.2.4 // indirect
-	github.com/lubanproj/gorpc v0.0.0-20200326125305-9cdd65afb7eb // indirect
+	github.com/lubanproj/gorpc v0.0.0-20200326125305-9cdd65afb7eb
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/saintfish/chardet v0.0.0-20120816061221-3af4cd4741ca // indirect
 	github.com/stretchr/testify v1.4.0
