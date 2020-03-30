@@ -57,9 +57,9 @@ func pushToGithub(data, token string) error {
 	}
 
 
-	oldContentList := strings.Split(string(decodeBytes), "<hr>")
+	oldContentList := strings.Split(string(decodeBytes), "<br>")
 
-	content.Content = []byte(oldContentList[0] + data + "<hr>")
+	content.Content = []byte(oldContentList[0] + data + "<br>")
 
 	_, _, err = client.Repositories.UpdateFile(ctx, "lubanproj", "go_read", "README.md", content)
 

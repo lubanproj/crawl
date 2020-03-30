@@ -7,6 +7,7 @@ import (
 	"github.com/lubanproj/gorpc/log"
 	"os"
 	"strings"
+	"time"
 )
 
 // Get the configuration from the computer environment variables
@@ -55,15 +56,20 @@ func Crawl(url string) {
 		isExist, err := existTopic(conn, topic)
 
 		// the topic has had crawled
-		if isExist == 1 || err == nil {
+		if isExist == 1 || err != nil {
 			return
 		}
 
 		title, content, ok := parseContent(string(r.Body))
-		titleAndContent := fmt.Sprintf("%s<hr>%s", title, content)
+		titleAndContent := fmt.Sprintf("<h3>%s</h3>%s<hr>", title, content)
 		fmt.Println("titleAndContent : ", titleAndContent)
 
 		date := getDate(title)
+		if curDay := time.Now().Format("yyyy-MM-dd"); curDay != date {
+			// just climb today's data
+			return
+		}
+
 		if ok && content != "" && title != "" {
 			pushToGithub(titleAndContent, Token)
 		}

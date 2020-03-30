@@ -6,8 +6,9 @@ var URL = "https://gocn.vip/topics/node18"
 
 func main() {
 	// crawl
-	Crawl(URL)
-	// push to github
+	// Crawl(URL)
+
+	CrawlByInterval(0,4)
 
 }
 
