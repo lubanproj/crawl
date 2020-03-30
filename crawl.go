@@ -14,6 +14,9 @@ func GetValueFromEnv(key string) string {
 	return os.Getenv(key)
 }
 
+// environment variable preparation
+var Token = GetValueFromEnv("GITHUB_TOKEN")
+
 
 // Crawl all gocn topics
 func Crawl(url string) {
@@ -51,7 +54,7 @@ func Crawl(url string) {
 		fmt.Println("content : ", content)
 
 		if ok && content != ""{
-			pushToGithub(content)
+			pushToGithub(content, Token)
 		}
 	})
 
