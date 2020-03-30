@@ -1,14 +1,24 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 var URL = "https://gocn.vip/topics/node18"
 
 func main() {
 	// crawl
-	// Crawl(URL)
 
-	CrawlByInterval(0,4)
+	t := time.Tick(time.Hour * 6)
+
+	for {
+		Crawl(URL)
+
+		<-t
+	}
+
+	//CrawlByInterval(0,4)
 
 }
 
