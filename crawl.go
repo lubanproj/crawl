@@ -50,19 +50,32 @@ func Crawl(url string) {
 	})
 
 	collector.OnResponse(func(r *colly.Response) {
-		content, ok := parseContent(string(r.Body))
-		fmt.Println("content : ", content)
 
-		if ok && content != ""{
-			pushToGithub(content, Token)
+		topic := strings.Replace(r.Request.URL.Path,"/topics/","", -1)
+		isExist, err := existTopic(conn, topic)
+
+		// the topic has had crawled
+		if isExist == 1 || err == nil {
+			return
 		}
+
+		title, content, ok := parseContent(string(r.Body))
+		titleAndContent := fmt.Sprintf("%s<hr>%s", title, content)
+		fmt.Println("titleAndContent : ", titleAndContent)
+
+		date := getDate(title)
+		if ok && content != "" && title != "" {
+			pushToGithub(titleAndContent, Token)
+		}
+
+		saveDB(conn, topic, date)
 	})
 
 	collector.Visit(url)
 }
 
 
-func parseContent(body string) (string, bool) {
+func parseContent(body string) (string, string, bool) {
 
 	pattern := `<p>GoCN(.|\n|\t)*每日新闻(.*?)</p>`
 	title, _ := regexMatch(body, pattern)
@@ -71,7 +84,7 @@ func parseContent(body string) (string, bool) {
 		title, _ = regexMatch(body, pattern)
 
 		if title == "" {
-			return "", false
+			return "", "", false
 		}
 		pattern = `>(.|\n|\t)*每日新闻(.|\n|\t)*<`
 		title, _ = regexMatch(title, pattern)
@@ -82,5 +95,12 @@ func parseContent(body string) (string, bool) {
 	pattern = `<ol>(.|\n|\t)*</ol>`
 	content, _ := regexMatch(body, pattern)
 
-	return fmt.Sprintf("%s<hr>%s", title, content), true
+	return title, content, true
+}
+
+func getDate(title string) string {
+	pattern := `[0-9]{4}-[0-1]{1}[0-9]{1}-[0-3]{1}[0-9]{1}`
+	date, _ := regexMatch(title, pattern)
+
+	return date
 }
