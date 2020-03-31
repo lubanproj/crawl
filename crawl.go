@@ -65,7 +65,7 @@ func Crawl(url string) {
 		fmt.Println("titleAndContent : ", titleAndContent)
 
 		date := getDate(title)
-		if curDay := time.Now().Format("yyyy-MM-dd"); curDay != date {
+		if curDay := time.Now().Format("2006-01-02"); curDay != date {
 			// just climb today's data
 			return
 		}
