@@ -12,7 +12,7 @@
   var Token = GetValueFromEnv("GITHUB_TOKEN")
   ```
 - 第二步，需要在本地安装 redis，并且启动程序之前需要先启动本地 redis，端口使用默认端口 6379，因为程序默认使用 redis 进行去重。redis 的安装
-  可以参考[redis安装](https://www.runoob.com/redis/redis-install.html)
+  可以参考 [redis安装](https://www.runoob.com/redis/redis-install.html)
    
 - 第三步，git clone 代码仓库，并且在后台进程中运行爬虫，每 6 个小时爬取当天新闻并进行 github 推送。
   ```
