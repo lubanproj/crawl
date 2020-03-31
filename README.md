@@ -13,12 +13,12 @@ A simple, easy-to-use crawler
   ```
    
 - 第三步，git clone 代码仓库，并且在后台进程中运行爬虫，每 6 个小时爬取当天新闻并进行 github 推送。
-```
-git clone https://github.com/lubanproj/crawl.git
-cd crawl
-go build -v 
-./crawl &
-```
+  ```
+  git clone https://github.com/lubanproj/crawl.git
+  cd crawl
+  go build -v 
+  ./crawl &
+  ```
 
 ## 展示效果
 
