@@ -2,12 +2,13 @@ package main
 
 import (
 	"fmt"
-	"github.com/gocolly/colly"
-	"github.com/gomodule/redigo/redis"
-	"github.com/lubanproj/gorpc/log"
 	"os"
 	"strings"
 	"time"
+
+	"github.com/gocolly/colly"
+	"github.com/gomodule/redigo/redis"
+	"github.com/lubanproj/gorpc/log"
 )
 
 // Get the configuration from the computer environment variables

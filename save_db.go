@@ -1,8 +1,9 @@
 package main
 
 import (
-	"github.com/gomodule/redigo/redis"
 	"time"
+
+	"github.com/gomodule/redigo/redis"
 )
 
 func saveDB(conn redis.Conn, topic string, date string) error {
