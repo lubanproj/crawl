@@ -1,5 +1,5 @@
 # crawl
-A simple, easy-to-use crawler
+简单、易用、小而健全的爬虫
 
 ## QuickStart
 只需三步，你就可以部署一个爬取 gocn 网站的所有新闻的爬虫
