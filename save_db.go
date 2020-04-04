@@ -1,8 +1,6 @@
 package main
 
 import (
-	"time"
-
 	"github.com/gomodule/redigo/redis"
 )
 
@@ -12,5 +10,5 @@ func saveDB(conn redis.Conn, topic string, date string) error {
 }
 
 func existTopic(conn redis.Conn, topic string) (int, error) {
-	return redis.Int(conn.Do("exists", topic, time.Now().Unix()))
+	return redis.Int(conn.Do("exists", topic))
 }
