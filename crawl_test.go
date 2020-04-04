@@ -32,7 +32,7 @@ func TestColly(t *testing.T) {
 
 func TestParseContent(t *testing.T) {
 	title := ""
-	_ , ok := parseContent(title)
+	_ ,_, ok := parseContent(title)
 	assert.Equal(t, ok, false)
 
 	body := "<ol><li>dubbogo v1.4 新特性 <a href=\"https://gocn.vip/topics/10119\" rel=\"nofollow\" target=\"_blank\">" +
@@ -43,6 +43,6 @@ func TestParseContent(t *testing.T) {
 		"https://mp.weixin.qq.com/s/QMbZOh8_LGIUdIdEBQ2-yA</a></li><li>分布式从 ACID、CAP、BASE 的理论推进 <a href=\"https://gocn.vip/topics/10121\" " +
 		"rel=\"nofollow\" target=\"_blank\">https://gocn.vip/topics/10121</a></li></ol>"
 
-	res , ok := parseContent(body)
+	res, _, ok := parseContent(body)
 	fmt.Println(res, ok)
 }
